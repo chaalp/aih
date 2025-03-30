@@ -263,7 +263,7 @@ public class Generator {
     // initialize hospitals
     Provider.loadProviders(location, this.clinicianRandom);
     // Initialize Payers
-    PayerManager.loadPayers(location);
+    //PayerManager.loadPayers(location);
     // ensure modules load early
     if (options.localModuleDir != null) {
       Module.addModules(options.localModuleDir);
