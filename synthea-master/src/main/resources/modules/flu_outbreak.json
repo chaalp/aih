@@ -1,25 +1,25 @@
 {
   "name": "flu_outbreak",
   "remarks": [
-    "Simulates a flu-like illness with clustering symptoms using valid logic."
+    "Simulates flu-like illness using supported probability-based transitions."
   ],
   "states": {
     "Initial": {
       "type": "Initial",
-      "direct_transition": "Flu Entry Chance"
+      "direct_transition": "Flu Entry"
     },
-    "Flu Entry Chance": {
-      "type": "DistributedTransition",
-      "distributions": [
+    "Flu Entry": {
+      "type": "Simple",
+      "choices": [
         {
           "transition": "Flu Symptoms",
-          "distribution": 0.25
-        },
-        {
-          "transition": "End",
-          "distribution": 0.75
+          "condition": {
+            "condition_type": "Probability",
+            "probability": 0.25
+          }
         }
-      ]
+      ],
+      "default_transition": "End"
     },
     "Flu Symptoms": {
       "type": "Symptom",
