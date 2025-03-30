@@ -1,35 +1,25 @@
 {
   "name": "flu_outbreak",
   "remarks": [
-    "Simulates a flu-like illness with clustering symptoms."
+    "Simulates a flu-like illness with clustering symptoms using valid logic."
   ],
   "states": {
     "Initial": {
       "type": "Initial",
-      "direct_transition": "Flu Entry Criteria"
+      "direct_transition": "Flu Entry Chance"
     },
-    "Flu Entry Criteria": {
-      "type": "Guard",
-      "allow": {
-        "condition_type": "And",
-        "conditions": [
-          {
-            "condition_type": "Gender",
-            "gender": "male"
-          },
-          {
-            "condition_type": "Age",
-            "operator": "<",
-            "value": 15
-          },
-          {
-            "condition_type": "Random",
-            "operator": "<",
-            "value": 0.25
-          }
-        ]
-      },
-      "direct_transition": "Flu Symptoms"
+    "Flu Entry Chance": {
+      "type": "DistributedTransition",
+      "distributions": [
+        {
+          "transition": "Flu Symptoms",
+          "distribution": 0.25
+        },
+        {
+          "transition": "End",
+          "distribution": 0.75
+        }
+      ]
     },
     "Flu Symptoms": {
       "type": "Symptom",
