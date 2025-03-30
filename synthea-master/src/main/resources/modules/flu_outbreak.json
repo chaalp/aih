@@ -1,7 +1,7 @@
 {
   "name": "flu_outbreak",
   "remarks": [
-    "Simulates flu-like illness using supported probability-based transitions."
+    "Simulates flu-like illness with a 25% chance using valid transitions."
   ],
   "states": {
     "Initial": {
@@ -19,7 +19,7 @@
           }
         }
       ],
-      "default_transition": "End"
+      "direct_transition": "End"
     },
     "Flu Symptoms": {
       "type": "Symptom",
